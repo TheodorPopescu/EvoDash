@@ -2,27 +2,30 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Text;
+using UnityEditor.PackageManager.Requests;
 
 public class CloudLeaderboard : MonoBehaviour
 {
 
     public string serverURL = "https://my-leaderboard-yj8n.onrender.com";
+
+    [System.Serializable]
     public class ScoreData
     {
         public string playerName;
-        public float score;
+        public float timeInSeconds;
     }
 
-    public void SubmitScore(string name, float time)
+    public void SubmitScore(string playerName, float timeInSeconds)
     {
-        StartCoroutine(PostScore(name, time));
+        StartCoroutine(PostScore(playerName, timeInSeconds));
     }
-    private IEnumerator PostScore(string name, float time)
+    private IEnumerator PostScore(string playerName, float timeInSeconds)
     {
         ScoreData data= new ScoreData();
-        data.playerName = name;
-        data.score = time;
-
+        data.playerName = playerName;
+        data.timeInSeconds= timeInSeconds;
+        
         string json= JsonUtility.ToJson(data);
 
         UnityWebRequest request = new UnityWebRequest(serverURL + "/api/add-score", "POST");
@@ -46,7 +49,7 @@ public class CloudLeaderboard : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame

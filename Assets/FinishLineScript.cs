@@ -13,6 +13,7 @@ public class FinishLineScript : MonoBehaviour
     public GameObject FinishLine;
     public TMP_Text LevelComplete;
     public TimerScript timerScript;
+    public GameObject FinishLineScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,10 +32,10 @@ public class FinishLineScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         LevelComplete.text = "Level Complete";
-        LevelComplete.gameObject.SetActive(true);
-        Replay.gameObject.SetActive(true);
+        FinishLineScreen.SetActive(true);
+
         timerScript.StopTimer();
-        leaderboard.SubmitScore(name, timerScript.returnTime());
+        leaderboard.SubmitScore(PlayerProfile.playerName, timerScript.returnTime());
         Time.timeScale = 0f;
     }
 }

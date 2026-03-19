@@ -18,6 +18,7 @@ public class TimerScript : MonoBehaviour
     }
     public void StartTimer()
     {
+        TimeElapsed = 0f;
         isRunning = true;
     }
     // Update is called once per frame
@@ -36,6 +37,6 @@ public class TimerScript : MonoBehaviour
     public void StopTimer()
     {
         isRunning = false;
-        TimeElapsed = 0;
+        
     }    
 }
