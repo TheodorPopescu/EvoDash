@@ -4,23 +4,29 @@ using UnityEngine.UI;
 
 public class PlayerProfile : MonoBehaviour
 {
-    public static string playerName = "Anonymous";
+    public static string playerName;
     public TMP_InputField nameInputField;
     public Button button;
     public GameObject startingScreen;
-    public GameObject player;
-    public PlayerScript playerScript;
+
+    private PlayerScript playerScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+          
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj)
+            playerScript = playerObj.GetComponent<PlayerScript>();
         if (PlayerPrefs.HasKey("SavedPlayerName"))
         {
             playerName = PlayerPrefs.GetString("SavedPlayerName");
             Time.timeScale = 1f;
             startingScreen.SetActive(false);
+            if (playerScript != null) playerScript.enabled = true;
         }
         else
         {
+          
             Time.timeScale = 0f;
             playerScript.enabled = false;
             startingScreen.SetActive(true);

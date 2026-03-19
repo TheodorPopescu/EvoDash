@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
-    public PlayerScript Player;
+    private PlayerScript Player;
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();

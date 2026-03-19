@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
-using UnityEditor.Build.Player;
+
 public class EnemyScript : MonoBehaviour
 {
     public Rigidbody2D rb;

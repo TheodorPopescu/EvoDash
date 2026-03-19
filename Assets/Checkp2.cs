@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Checkp2 : MonoBehaviour
 {
-    public PlayerScript Player;
+    private PlayerScript Player;
     void Start()
     {
        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
