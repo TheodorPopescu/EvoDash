@@ -30,6 +30,10 @@
 To build a smooth, web-ready platformer with a real-time leaderboard, I focused on clean architecture and optimized performance:
 
 * **Player Controller (State Machine):** Implemented a custom state-driven player controller to handle transitions between running, jumping, dashing, and falling. This decoupled the input logic from the physics execution, making the movement feel tight and responsive.
-* **Database Integration:** Integrated MongoDB to handle the global leaderboard. *(Explain how you did it here. E.g., Did you build a custom REST API using Node.js/Express? Did you use UnityWebRequest? Mentioning how you handled CORS issues for WebGL or secured the database connection is a huge plus!)*
+
+* **Custom REST API**: Built a backend middleware using Node.js and Express. This server handles all routing and communicates with a MongoDB database via Mongoose. It includes endpoints for checking player name availabilitt, submitting new completion times, and fetching the top 10 fastest times.
+Secure Database Connection: By routing database requests through a dedicated backend API, the MongoDB connection string (MONGO_URI) is safely hidden in server-side environment variables. This prevents malicious users from decompiling the Unity client and stealing database credentials.
+Unity Client Communication: On the frontend, the game uses UnityWebRequest to serialize player data into JSON format and asynchronously send POST/GET requests to the server without freezing the gameplay.
+* **WebGL Compatibility & CORS:** To ensure the leaderboard works perfectly in a browser environment (Unity WebGL), I implemented the cors middleware in the Express server. This resolves Cross-Origin Resource Sharing (CORS) security blocks, allowing the hosted game to safely fetch and post data to the API.
 * **Physics & Collision:** Utilized Unity's Rigidbody2D and optimized Raycasting for ground detection to prevent the "wall-sticking" bugs common in 2D platformers.
-* **WebGL Optimization:** Optimized texture compressions and stripped unused Unity engine code to ensure the WebGL build loads quickly in the browser.
+
