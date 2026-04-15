@@ -2,8 +2,7 @@
 
 🎮 **[Play the game directly in your browser here!](https://theodorpopescu.github.io/EvoDash/)**
 
-*(Optional: Insert a GIF or Screenshot of your gameplay here)*
-<!-- ![Gameplay Screenshot](link_to_image_here) -->
+
 
 ## ✨ Features
 
@@ -37,3 +36,4 @@ Unity Client Communication: On the frontend, the game uses UnityWebRequest to se
 * **WebGL Compatibility & CORS:** To ensure the leaderboard works perfectly in a browser environment (Unity WebGL), I implemented the cors middleware in the Express server. This resolves Cross-Origin Resource Sharing (CORS) security blocks, allowing the hosted game to safely fetch and post data to the API.
 * **Physics & Collision:** Utilized Unity's Rigidbody2D and optimized Raycasting for ground detection to prevent the "wall-sticking" bugs common in 2D platformers.
 
+<img width="1757" height="942" alt="image" src="https://github.com/user-attachments/assets/8eb003e5-f53b-4ae7-874b-b41cd55f06e2" />
